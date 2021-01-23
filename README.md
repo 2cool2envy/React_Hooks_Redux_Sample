@@ -1,3 +1,11 @@
+## Demo 
+
+![Demo](https://raw.githubusercontent.com/2cool2envy/React_Hooks_Redux_Sample/master/demo.gif)
+
+
+- Mohit Kapoor
+- kapoormohit01@gmail.com
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
