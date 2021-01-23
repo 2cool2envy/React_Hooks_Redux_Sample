@@ -6,26 +6,29 @@ import { useSelector, useDispatch } from 'react-redux'
 function App() {
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
-  const allBooks = useSelector(state => state.books);
+  const [CartData, setCart] = useState([]);
+
+  useEffect(() => {
+    if (cart && cart.length > 0) {
+      setCart(cart)
+    }
+  }, [cart]);
 
   const Checkout = () => {
-    var sum = 0;
-    if (cart && cart.length > 0) {
-      sum = cart.reduce((a, b) => a.price + b.price)
-    }
+    console.log('Cart data', CartData)
     return (
-      cart && cart.length > 0 &&
+      CartData && CartData.length > 0 &&
       <div className='row' style={{ borderStyle: '2px solid white' }}>
         {
-          cart.map((data) => {
-            return (<div className='col-lg-3 col-md-3'>
+          CartData.map((data) => {
+            return (<div key={data.isbn} className='col-lg-3 col-md-3'>
               <h4>Title : {data.title} </h4>
               <h5> Price : {data.price}</h5>
               <h5> ISBN : {data.isbn}</h5>
             </div>)
           })
         }
-        <button className='btn btn-success'>Checkout - Total Price {sum}</button>
+        <button className='btn btn-success'>Checkout </button>
       </div>
     );
   }
@@ -48,11 +51,11 @@ function App() {
     []);
 
   return (
-    <div className="App" style={{overflowX:'hidden'}}>
+    <div className="App" style={{ overflowX: 'hidden' }}>
       <header className="App-header">
         <div style={{ width: '100%' }}>
           <div style={{ width: '55  %', float: 'left', textAlign: 'right' }}>  Book Store</div>
-          <div style={{ textAlign: 'right' }}>  Cart : {cart.length}  </div>
+          <div style={{ textAlign: 'right' }}>  Cart : {CartData.length}  </div>
           <Checkout />
         </div>
       </header>

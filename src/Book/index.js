@@ -72,15 +72,15 @@ function Book({ data }) {
                 {
                     counter.map((val) => {
                         return (
-                            <div style={child}>
+                            <div key={val.isbn} style={child}>
 
                                 <h4>{val.title}</h4>
                                 <cite>{val.authors}</cite>
                                 <br />
                                 <small> ISBN :{val.isbn} Language: {val.language_code}</small>
                                 <br /><br />
-                                <label for="disk_c">Rating: {val.average_rating} </label>
-                                <meter id="disk_c" value={val.average_rating} min="0" max="5"></meter>
+                                <label >Rating: {val.average_rating} </label>
+                                <meter value={val.average_rating} min="0" max="5"></meter>
                                 <br />
                                 <button style={button}
                                     onClick={() => {
